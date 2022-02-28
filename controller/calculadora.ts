@@ -1,21 +1,20 @@
 import {Request,Response} from 'express';
-import fs from 'fs';
 
 class Calculadora {
-    numbersArray: any = 0;
-    operatorsArray: any = '+';
+    numbersArray: any ;
+    operatorsArray: any;
 
     constructor(){
         this.numbersArray = 0;
-        console.log(this.numbersArray);
+        //console.log(this.numbersArray);
     }
 
     load(req:Request,res:Response): any{
-        let numbers: any[] = this.numbersArray;
+        let numbers: any = this.numbersArray;
         //numbers.push(parseFloat(req.body.numbers));
         //let operators = this.operatorsArray;
         //operators.push(req.body.operators);    
-        console.log(numbers);
+       // console.log(numbers);
         res.json(`${numbers} `)
     }
       /*resultado(res:Response){
