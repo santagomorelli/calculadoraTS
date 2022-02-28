@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const calculadora_1 = require("../controller/calculadora");
+const router = (0, express_1.Router)();
+router.get('/');
+router.put('/');
+router.post('/', calculadora_1.calculadora.load);
+router.delete('/');
+exports.default = router;
