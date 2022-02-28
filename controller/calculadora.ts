@@ -5,6 +5,11 @@ class Calculadora {
     numbersArray: any = 0;
     operatorsArray: any = '+';
 
+    constructor(){
+        this.numbersArray = 0;
+        console.log(this.numbersArray);
+    }
+
     load(req:Request,res:Response): any{
         let numbers: any[] = this.numbersArray;
         //numbers.push(parseFloat(req.body.numbers));
