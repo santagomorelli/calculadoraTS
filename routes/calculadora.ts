@@ -1,14 +1,13 @@
-import { Router } from "express";
+import { Router, request, response, NextFunction } from "express";
 import { calculadora } from "../controller/calculadora";
 
 const router = Router();
 
+router.get('/', (req,res,next) => calculadora.load(req,res,next));
 
-router.get('/', );
+router.put('/');
 
-router.put('/')
-
-router.post('/', calculadora.load);
+router.post('/');
 
 router.delete('/',);
 

@@ -1,7 +1,6 @@
 import express from 'express';
 import * as http from 'http';
 import api from './routes/calculadora';
-//import { Calculadora } from './calculadora';
 
 const puerto = 8081;
 const app = express();

@@ -1,23 +1,21 @@
-import {Request,Response} from 'express';
+import {NextFunction, Request,Response} from 'express';
 
 class Calculadora {
-    numbersArray: any ;
-    operatorsArray: any;
+    
+ numbersArray: any[];
+    
+     constructor(){
+         this.numbersArray = []; 
+     }
 
-    constructor(){
-        this.numbersArray = 0;
-        //console.log(this.numbersArray);
+    load(req:Request,res:Response,next:NextFunction){
+        let newNumber = req.body.numbers;
+        let historyNumber: any[] = this.numbersArray;
+        historyNumber.push(newNumber);
+        res.json({msg:`${historyNumber}`});
     }
 
-    load(req:Request,res:Response): any{
-        let numbers: any = this.numbersArray;
-        //numbers.push(parseFloat(req.body.numbers));
-        //let operators = this.operatorsArray;
-        //operators.push(req.body.operators);    
-       // console.log(numbers);
-        res.json(`${numbers} `)
-    }
-      /*resultado(res:Response){
+    /*resultado(res:Response){
         const length = this.numbersArray.length;
         const operations = this.operators;
         let resultado: number = 0;
@@ -50,8 +48,8 @@ class Calculadora {
         this.numbersArray=[];
         this.operators=[];
         res.json({msg:'Calculadora reseteada'})
-    }
-} */
-}
- 
+    }*/
+} 
+
+
 export const calculadora = new Calculadora();

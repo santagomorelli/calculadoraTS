@@ -25,7 +25,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const http = __importStar(require("http"));
 const calculadora_1 = __importDefault(require("./routes/calculadora"));
-//import { Calculadora } from './calculadora';
 const puerto = 8081;
 const app = (0, express_1.default)();
 const myServer = new http.Server(app);
