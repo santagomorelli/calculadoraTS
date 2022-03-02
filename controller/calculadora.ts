@@ -3,24 +3,31 @@ import {NextFunction, Request,Response} from 'express';
 class Calculadora {
     
  numbersArray: any[];
+ operatorsArray: any[];
     
      constructor(){
          this.numbersArray = []; 
+         this.operatorsArray = [];
      }
 
-    load(req:Request,res:Response,next:NextFunction){
-        let newNumber = req.body.numbers;
-        let historyNumber: any[] = this.numbersArray;
-        historyNumber.push(newNumber);
-        res.json({msg:`${historyNumber}`});
+    async load(req:Request,res:Response,next:NextFunction){
+          const newNumber = parseFloat(req.body.numbers);
+          const newOperator = req.body.operators;
+          let historyNumber: any[] = await this.numbersArray;
+          let historyOperator:any[]= await this.operatorsArray;
+          historyNumber.push(newNumber);
+          historyOperator.push(newOperator);
+          this.numbersArray = await historyNumber;
+          this.operatorsArray = await historyOperator;
+          res.json({msg:`${historyNumber} ${historyOperator}`});
     }
 
-    /*resultado(res:Response){
+    resultado(res:Response){
         const length = this.numbersArray.length;
-        const operations = this.operators;
+        const operations = this.operatorsArray;
         let resultado: number = 0;
         for(let i=0;i<length; i++){
-            let number = this.numbersArray[i];
+            let number = parseFloat(this.numbersArray[i]);
             switch(operations[i]){
                 case '+':
                     resultado = resultado + number;
@@ -40,15 +47,14 @@ class Calculadora {
                     resultado = resultado;
             }
         }
-        console.log(resultado);
-        res.json(resultado)
+       res.json(resultado)
     }
 
     reset(res: Response){
         this.numbersArray=[];
-        this.operators=[];
+        this.operatorsArray=[];
         res.json({msg:'Calculadora reseteada'})
-    }*/
+    }
 } 
 
 
