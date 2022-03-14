@@ -22,8 +22,9 @@ class Calculadora {
           res.json({msg:`${historyNumber} ${historyOperator}`});
     }
 
-    resultado(res:Response){
+    resultado(req:Request,res:Response,next:NextFunction){
         const length = this.numbersArray.length;
+        console.log(this.numbersArray, this.operatorsArray)
         const operations = this.operatorsArray;
         let resultado: number = 0;
         for(let i=0;i<length; i++){
@@ -50,7 +51,7 @@ class Calculadora {
        res.json(resultado)
     }
 
-    reset(res: Response){
+    reset(req:Request,res:Response,next:NextFunction){
         this.numbersArray=[];
         this.operatorsArray=[];
         res.json({msg:'Calculadora reseteada'})
