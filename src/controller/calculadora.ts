@@ -37,21 +37,33 @@ class Calculadora {
                     console.log('suma', resultado, number);
                 break;
                 case '-':
-                    resultado = resultado - number;
-                    console.log('resta', resultado, number);
+                    if(i == 0){
+                        resultado = number
+                    }
+                    else{
+                        resultado = resultado  - number
+                    }
                 break;
                 case '*':
-                    resultado = resultado * number;
+                    if(i == 0){
+                        resultado = number
+                    }
+                    else{
+                        resultado = resultado * number
+                    }
                 break;
                 case '/':
-                    resultado = resultado / number;
+                    if(i == 0){
+                        resultado = resultado}
+                    else{
+                        resultado = resultado / number}
                 break;
                 default:
                     resultado = resultado;
             }
         }
-        this.resultadoFinal = resultado;
-       res.json(resultado)
+       this.resultadoFinal = resultado;
+       res.redirect('/');
     }
 
     reset(req:Request,res:Response,next:NextFunction){
